@@ -11,7 +11,7 @@ class Empresa(models.Model):
     cep = models.CharField(max_length=8, null=False)
     logradouro = models.CharField(max_length=50, null=False)
     numero = models.CharField(max_length=10, null=False)
-    complemento = models.CharField(max_length=50)
+    complemento = models.CharField(max_length=50, null=True)
     bairro = models.CharField(max_length=50, null=False)
     cidade = models.CharField(max_length=50, null=False)
     estado = models.CharField(max_length=2, null=False)
