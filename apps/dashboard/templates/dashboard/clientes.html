@@ -1,0 +1,118 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% block title_dashboard %} <title>Cadastros - ERP</title> {% endblock %}
+{% block title_page %} <h3>Meus Clientes</h3> {% endblock %}
+
+{% block main_system %}
+
+<div class="botoes-cadastrar-clientes">
+    <button class="btn btn-warning" type="button">Cadastrar Pessoa <b>Física</b></button>
+    <button class="btn btn-warning" type="button">Cadastrar Pessoa <b>Jurídica</b></button>
+    <button class="btn btn-warning" type="button">Cadastrar <b>Estrangeiro</b></button>
+</div>
+
+<div class="barra-pesquisa-clientes">
+    <input type="text" placeholder="Pesquisar por Nome, Razão Social, Fantasia, CPF ou CNPJ"
+           class="form-control">
+</div>
+
+<div class="tabela-lista-clientes">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome/Razão Social</th>
+          <th scope="col">CPF/CNPJ</th>
+          <th scope="col">Inscrição Estadual</th>
+          <th scope="col">Telefone/Celular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">0001</th>
+          <td>PADARIA S.A.</td>
+          <td>01.234.567/0001-11</td>
+          <td>10.111.222-3</td>
+          <td>(62) 99333-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0002</th>
+          <td>SUPERMERCADO LTDA</td>
+          <td>02.345.678/0001-22</td>
+          <td>10.222.333-4</td>
+          <td>(62) 98455-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0003</th>
+          <td>JOSE MARIA CAVALCANTE</td>
+          <td>223.456.789-00</td>
+          <td>NÃO CONTRIBUINTE</td>
+          <td>(61) 99900-1122)</td>
+        </tr>
+        <tr>
+          <th scope="row">0001</th>
+          <td>PADARIA S.A.</td>
+          <td>01.234.567/0001-11</td>
+          <td>10.111.222-3</td>
+          <td>(62) 99333-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0002</th>
+          <td>SUPERMERCADO LTDA</td>
+          <td>02.345.678/0001-22</td>
+          <td>10.222.333-4</td>
+          <td>(62) 98455-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0003</th>
+          <td>JOSE MARIA CAVALCANTE</td>
+          <td>223.456.789-00</td>
+          <td>NÃO CONTRIBUINTE</td>
+          <td>(61) 99900-1122)</td>
+        </tr>
+        <tr>
+          <th scope="row">0001</th>
+          <td>PADARIA S.A.</td>
+          <td>01.234.567/0001-11</td>
+          <td>10.111.222-3</td>
+          <td>(62) 99333-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0002</th>
+          <td>SUPERMERCADO LTDA</td>
+          <td>02.345.678/0001-22</td>
+          <td>10.222.333-4</td>
+          <td>(62) 98455-0000</td>
+        </tr>
+        <tr>
+          <th scope="row">0003</th>
+          <td>JOSE MARIA CAVALCANTE</td>
+          <td>223.456.789-00</td>
+          <td>NÃO CONTRIBUINTE</td>
+          <td>(61) 99900-1122)</td>
+        </tr>
+      </tbody>
+    </table>
+</div></br>
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Anterior</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Próxima</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}
