@@ -25,6 +25,7 @@
           <th scope="col">CPF/CNPJ</th>
           <th scope="col">Inscrição Estadual</th>
           <th scope="col">Telefone/Celular</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +36,10 @@
           <td>{{ clients.cpf }}</td>
           <td>10.111.222-3</td>
           <td>{{ clients.telefone }}</td>
+          <td>
+            <a href="{% url 'edit_client' clients.id %}">Editar</a>
+            <a href="{% url 'delete_client' clients.id %}">Excluir</a>
+          </td>
         </tr>
       {% endfor %}
       </tbody>

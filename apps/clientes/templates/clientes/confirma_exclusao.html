@@ -1,0 +1,34 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load meus_filtros %}
+
+{% block title_dashboard %} <title>Clientes - ERP</title> {% endblock title_dashboard %}
+{% block title_page %} <h3>Remover Cliente</h3> {% endblock title_page %}
+
+{% block main_system %}
+
+<div class="card">
+  <div class="card-header">
+    Tem certeza que deseja remover este cliente?
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Nome: {{ client.nome }}</h5>
+    <h5 class="card-title">CPF: {{ client.cpf }}</h5>
+    <h5 class="card-title">Telefone: {{ client.telefone }}</h5>
+    <p class="card-title">CEP: {{ client.cep }}</p>
+    <p class="card-title">Logradouro: {{ client.logradouro }}</p>
+    <p class="card-title">Número: {{ client.numero }}</p>
+    <p class="card-title">Complemento: {{ client.complemento }}</p>
+    <p class="card-title">Bairro: {{ client.bairro }}</p>
+    <p class="card-title">Cidade: {{ client.cidade }}</p>
+    <p class="card-title">Estado: {{ client.estado }}</p>
+
+      <form method="post">
+          {% csrf_token %}
+          <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary">Voltar</a>
+          <button class="btn btn-danger" type="submit">Remover</button>
+      </form>
+      
+  </div>
+</div>
+
+{% endblock main_system %}
