@@ -3,14 +3,14 @@ from django.shortcuts import render, redirect
 from .models import ClientePessoaFisica
 from .forms import ClientePessoaFisicaForm
 from .entidades import cliente
-
+from .services import cliente_pf_service
 
 # Função para retornar todos os clientes do banco
 # O @login_required exige que o usuário esteja logado para acessar essa consulta
 @login_required
 def ListClientsPessoaFisica(request):
-    list_clients_pf = ClientePessoaFisica.objects.all()
-    data = {'list_clients_pf': list_clients_pf}
+    clientes = cliente_pf_service.listar_clientes()
+    data = {'list_clients_pf': clientes}
     return render(request, 'clientes/clientes.html', data)
 
 # Função para cadastrar um cliente pessoa física e posteriormente redirecionando ele para a lista de clientes
@@ -30,9 +30,10 @@ def CreateClientsPessoaFisica(request):
             bairro = form.cleaned_data["bairro"]
             cidade = form.cleaned_data["cidade"]
             estado = form.cleaned_data["estado"]
-            client_new = cliente.ClientePessoaFisica(nome=nome, cpf=cpf, telefone=telefone, cep=cep,
+            cliente_novo = cliente.ClientePessoaFisica(nome=nome, cpf=cpf, telefone=telefone, cep=cep,
                                                      logradouro=logradouro, numero=numero, complemento=complemento,
                                                      bairro=bairro, cidade=cidade, estado=estado)
+            cliente_pf_service.cadastrar_cliente(cliente_novo)
             return redirect('list_clients')
     else:
         form = ClientePessoaFisicaForm()
@@ -43,8 +44,8 @@ def CreateClientsPessoaFisica(request):
 # O @login_required exige que o usuário esteja logado para acessar essa consulta
 @login_required
 def EditClientPessoaFisica(request, id):
-    edit_client = ClientePessoaFisica.objects.get(id=id)
-    form = ClientePessoaFisicaForm(request.POST or None, instance=edit_client)
+    cliente_antigo = cliente_pf_service.listar_cliente_id(id)
+    form = ClientePessoaFisicaForm(request.POST or None, instance=cliente_antigo)
     if form.is_valid():
         nome = form.cleaned_data["nome"]
         cpf = form.cleaned_data["cpf"]
@@ -56,18 +57,19 @@ def EditClientPessoaFisica(request, id):
         bairro = form.cleaned_data["bairro"]
         cidade = form.cleaned_data["cidade"]
         estado = form.cleaned_data["estado"]
-        client_new = cliente.ClientePessoaFisica(nome=nome, cpf=cpf, telefone=telefone, cep=cep,
+        cliente_novo = cliente.ClientePessoaFisica(nome=nome, cpf=cpf, telefone=telefone, cep=cep,
                                                  logradouro=logradouro, numero=numero, complemento=complemento,
                                                  bairro=bairro, cidade=cidade, estado=estado)
+        cliente_pf_service.editar_cliente(cliente_antigo, cliente_novo)
         return redirect('list_clients')
     data = {'form': form}
     return render(request, 'clientes/form_client_pf.html', data)
 
 @login_required
 def DeleteClientPessoaFisica(request, id):
-    client = ClientePessoaFisica.objects.get(id=id)
+    cliente = cliente_pf_service.listar_cliente_id(id)
     if request.method == "POST":
-        client.delete()
+        cliente_pf_service.remover_cliente(cliente)
         return redirect('list_clients')
-    data = {'client': client}
+    data = {'client': cliente}
     return render(request, 'clientes/confirma_exclusao.html', data)
