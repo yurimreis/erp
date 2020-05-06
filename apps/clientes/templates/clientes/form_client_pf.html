@@ -1,0 +1,63 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load meus_filtros %}
+
+{% block title_dashboard %} <title>Cadastros - ERP</title> {% endblock title_dashboard %}
+{% block title_page %} <h3>Novo Cliente</h3> {% endblock title_page %}
+
+{% block main_system %}
+
+<div>
+    <form method="post">
+        {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Nome</label>
+            {{ form.nome | addclass:'form-control' }}
+        </div>
+        <div class="form-group col-md-3">
+          <label>CPF</label>
+            {{ form.cpf | addclass:'form-control' }}
+        </div>
+        <div class="form-group col-md-3">
+        <label>Telefone</label>
+            {{ form.telefone | addclass:'form-control' }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+            <label>CEP</label>
+            {{ form.cep | addclass:'form-control' }}
+        </div>
+        <div class="form-group col-md-6">
+          <label>Logradouro</label>
+            {{ form.logradouro | addclass:'form-control' }}
+        </div>
+        <div class="form-group col-md-1">
+          <label>Número</label>
+            {{ form.numero | addclass:'form-control' }}
+        </div>
+        <div class="form-group col-md-3">
+          <label>Complemento</label>
+            {{ form.complemento | addclass:'form-control' }}
+        </div>
+         <div class="form-group col-md-4">
+          <label>Bairro</label>
+            {{ form.bairro | addclass:'form-control' }}
+        </div>
+         <div class="form-group col-md-4">
+          <label>Cidade</label>
+            {{ form.cidade | addclass:'form-control' }}
+        </div>
+         <div class="form-group col-md-4">
+          <label>Estado</label>
+            {{ form.estado | addclass:'form-control' }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a type="button" class="btn btn-secondary" href="">Cancelar</a>
+    </form>
+</div>
+
+{% endblock main_system %}

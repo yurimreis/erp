@@ -1,0 +1,64 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% block title_dashboard %} <title>Cadastros - ERP</title> {% endblock %}
+{% block title_page %} <h3>Meus Clientes</h3> {% endblock %}
+
+{% block main_system %}
+
+<div class="botoes-cadastrar-clientes">
+    <a class="btn btn-warning" type="button" href="{% url 'create_clients' %}">Cadastrar Pessoa <b>Física</b></a>
+    <a class="btn btn-warning" type="button" href="">Cadastrar Pessoa <b>Jurídica</b></a>
+    <a class="btn btn-warning" type="button" href="">Cadastrar <b>Estrangeiro</b></a>
+</div>
+
+<div class="barra-pesquisa-clientes">
+    <input type="text" placeholder="Pesquisar por Nome, Razão Social, Fantasia, CPF ou CNPJ"
+           class="form-control">
+</div>
+
+<div class="tabela-lista-clientes">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome/Razão Social</th>
+          <th scope="col">CPF/CNPJ</th>
+          <th scope="col">Inscrição Estadual</th>
+          <th scope="col">Telefone/Celular</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for clients in list_clients_pf %}
+        <tr>
+          <th scope="row">{{ clients.id }}</th>
+          <td>{{ clients.nome }}</td>
+          <td>{{ clients.cpf }}</td>
+          <td>10.111.222-3</td>
+          <td>{{ clients.telefone }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div></br>
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Anterior</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Próxima</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}
